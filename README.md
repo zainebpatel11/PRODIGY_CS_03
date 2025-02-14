@@ -43,9 +43,6 @@ Contributions are welcome! To contribute:
 - 📤 Push to the branch (`git push origin feature-branch`).
 - 📨 Open a Pull Request.
 
-## 📝 License
-This project is licensed under the **MIT License**.
-
 ---
 **Created with ❤️ by Zaineb Patel **
 
