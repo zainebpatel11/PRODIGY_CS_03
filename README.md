@@ -14,8 +14,8 @@ An advanced password strength checker built with **HTML, CSS, and JavaScript**, 
 - 👓 Shows or hides the entered password.
 
 ## 🛠️ How to Use
-1. **Clone the repository:**
-2. **Navigate to the project directory:**
+1. **Clone the repository**
+2. **Navigate to the project directory**
 3. **Open the HTML file:**
    Simply open `index.html` in your browser.
 
