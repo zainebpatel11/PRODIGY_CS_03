@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Password Checker</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1e1e2f;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    .box {
+      background: #2c2c3c;
+      border-radius: 20px;
+      padding: 40px;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    }
+    h2 { color: #f5f5f5; }
+    input {
+      padding: 12px;
+      width: 80%;
+      border-radius: 8px;
+      border: 1px solid #444;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .password-input {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .slider-bar {
+      height: 15px;
+      width: 100%;
+      background-color: #444;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .slider-progress {
+      height: 100%;
+      transition: width 0.5s ease-in-out;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover { background-color: #45A049; }
+    .show-password {
+      cursor: pointer;
+      font-size: 12px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Password Strength Checker</h2>
+    <div class="password-input">
+      <input type="password" id="password" placeholder="Enter your password">
+      <span class="show-password" onclick="togglePassword()">Show</span>
+    </div>
+    <div class="slider-bar">
+      <div id="sliderProgress" class="slider-progress"></div>
+    </div>
+    <p id="strengthText"></p>
+    <button class="btn" onclick="generateStrongPassword()">Suggest Strong Password</button>
+  </div>
+
+  <script>
+    function checkStrength() {
+      const pwd = document.getElementById('password').value;
+      let score = 0;
+      if (pwd.length >= 8) score++;
+      if (/[a-z]/.test(pwd)) score++;
+      if (/[A-Z]/.test(pwd)) score++;
+      if (/[0-9]/.test(pwd)) score++;
+      if (/[!@#$%^&*]/.test(pwd)) score++;
+
+      const progress = ["#ff4d4d", "#ffa94d", "#4caf50"];
+      const text = ["Weak", "Moderate", "Strong"];
+      
+      document.getElementById('sliderProgress').style.width = (score * 20) + '%';
+      document.getElementById('sliderProgress').style.backgroundColor = progress[Math.min(score - 1, 2)];
+      document.getElementById('strengthText').innerText = score > 0 ? text[Math.min(score - 1, 2)] : "";
+    }
+
+    function togglePassword() {
+      const pwdInput = document.getElementById('password');
+      pwdInput.type = pwdInput.type === 'password' ? 'text' : 'password';
+    }
+
+    function generateStrongPassword() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+      let password = "";
+      for (let i = 0; i < 12; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('password').value = password;
+      checkStrength();
+    }
+
+    document.getElementById('password').addEventListener('input', checkStrength);
+  </script>
+</body>
+</html>
