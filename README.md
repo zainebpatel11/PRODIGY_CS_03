@@ -15,13 +15,7 @@ An advanced password strength checker built with **HTML, CSS, and JavaScript**, 
 
 ## 🛠️ How to Use
 1. **Clone the repository:**
-   ```bash
-   git clone 
-   ```
 2. **Navigate to the project directory:**
-   ```bash
-   cd password-strength-checker
-   ```
 3. **Open the HTML file:**
    Simply open `index.html` in your browser.
 
